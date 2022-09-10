@@ -1,13 +1,16 @@
 @extends('layouts.jankenapp')
 
 @section('content')
-<form action="">
+<form action="/janken" method="post">
   @csrf
-  <div>
-    <input type="radio" name="hand" value="goo">
-    <input type="radio" name="hand" value="choki">
-    <input type="radio" name="hand" value="par">
-  </div>
-  <div><input type="submit" value="勝負！"></div>
+    <table>
+      <tr><th>グー</th><th>チョキ</th><th>パー</th></tr>
+      <tr>
+        <td><input type="radio" name="hand" value="0"></td>
+        <td><input type="radio" name="hand" value="1"></td>
+        <td><input type="radio" name="hand" value="2"></td>
+      </tr>
+      <tr><td><input type="submit" value="勝負！"></td></tr>
+    </table>
 </form>
 @endsection

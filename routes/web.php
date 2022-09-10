@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('janken', 'App\Http\Controllers\JankenController@index');
+Route::get('/janken', 'App\Http\Controllers\JankenController@index');
+
+Route::post('/janken', 'App\Http\Controllers\JankenController@result');
