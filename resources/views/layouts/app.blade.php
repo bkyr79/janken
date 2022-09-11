@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>じゃんけんゲーム</title>
+    <title>@yield('title')</title>
   </head>
   <body>
     @yield('content')

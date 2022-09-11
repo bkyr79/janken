@@ -26,6 +26,11 @@ class JankenController extends Controller
         ]);
     }
 
+    public function again()
+    {
+        return view('janken.start');
+    }
+
     // さらに関数に分けた方が良さそう
     public function janken($myHand, $cpuHand)
     {

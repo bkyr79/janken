@@ -1,4 +1,6 @@
-@extends('layouts.jankenapp')
+@extends('layouts.app')
+
+@section('title', 'じゃんけんゲーム')
 
 @section('content')
 {{-- if文をビューで書くべきなのか、コントローラで書くべきなのか悩む --}}
@@ -21,4 +23,9 @@ CPUは
 @endif
 を出しました
 <div>結果は   {{ $param['resultMsg'] }}</div>
+<div>
+  <form action="/again" method="get">
+  <input type="submit" value="もう一度">
+  </form>
+</div>
 @endsection

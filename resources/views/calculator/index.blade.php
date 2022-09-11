@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.jankenapp')
 
-@section('title', 'じゃんけんゲーム')
+@section('title', '電卓')
 
 @section('content')
 <form action="/janken" method="post">
