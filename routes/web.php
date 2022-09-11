@@ -22,3 +22,7 @@ Route::get('/janken', 'App\Http\Controllers\JankenController@index');
 Route::post('/janken', 'App\Http\Controllers\JankenController@result');
 
 Route::get('/again', 'App\Http\Controllers\JankenController@again');
+
+Route::get('/calculator', 'App\Http\Controllers\CalculatorController@index');
+
+Route::post('/calculate', 'App\Http\Controllers\CalculatorController@calculate');

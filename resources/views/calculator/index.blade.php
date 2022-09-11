@@ -1,18 +1,17 @@
-@extends('layouts.jankenapp')
+@extends('layouts.app')
 
 @section('title', '電卓')
 
 @section('content')
-<form action="/janken" method="post">
+<form action="/calculate" method="post">
   @csrf
-    <table>
-      <tr><th>グー</th><th>チョキ</th><th>パー</th></tr>
-      <tr>
-        <td><input type="radio" name="hand" value="0"></td>
-        <td><input type="radio" name="hand" value="1"></td>
-        <td><input type="radio" name="hand" value="2"></td>
-      </tr>
-      <tr><td><input type="submit" value="勝負！"></td></tr>
-    </table>
+  <input type="submit" name="one" value="1">
+  <input type="submit" name="two" value="2">
+  <input type="submit" name="plus" value="+">
+  <input type="submit" name="equal" value="=">
+  {{-- <input type="text" name=""> --}}
+  {{ $one }}
+  {{ $two }}
+  {{ $hoge }}
 </form>
 @endsection
