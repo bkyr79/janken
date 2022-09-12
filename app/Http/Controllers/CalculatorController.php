@@ -7,15 +7,11 @@ use App\Http\Controllers\Controller;
 
 class CalculatorController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $one = '';
-        $two = '';
-        $hoge = $request->session()->all();
+        $result = '';
         return view('calculator.index', [
-            'one' => $one,
-            'two' => $two,
-            'hoge' => $hoge,
+            'result' => $result,
         ]);
     }
 
@@ -23,20 +19,44 @@ class CalculatorController extends Controller
     // セッションを保存する関数、保存されたセッションを表示する関数とで分けないといけない
     public function calculate(Request $request)
     {
-        $hoge = '';
-        $one = $request->get('one');
-        $request->session()->put('one', $one);
-        $one_get = $request->session()->get('one');
-        $two = $request->get('two');
-        $request->session()->put('two', $two);
-        $two_get = $request->session()->get('two');
-        if($request->session()->has('one')){
-            $hoge = 'セッションoneは存在します';
+        if($request->get('clear')){
+            $request->session()->flush();
+            $request->session()->put('one', '');
+            $request->session()->put('two', '');
         }
+
+        // 同じ数字同士の計算もできるように..
+        // 複数回の演算もできるように..
+        // セッションを保存する条件を考える
+
+        // 数字であれば、数字をセッション保存する
+        if($request->get('num')){
+            $first = $request->get('num');
+            $request->session()->put('first', $first);
+        }
+
+        // 数字をセッション保存していれば、演算子をセッション保存する
+        if($request->session()->get('first')){
+            $second = $request->get('operator');
+            $request->session()->put('second', $second);
+        }
+
+        // 演算子をセッション保存していれば、数字をセッション保存する
+        if($request->session()->get('second')){
+            $third = $request->get('num');
+            $request->session()->put('third', $third);
+        }
+
+        // 数字をセッション保存していれば、計算する
+        if($request->session()->get('third')){
+            $number1 = $request->session()->get('first');
+            $operator = $request->session()->get('second');
+            $number2 = $request->session()->get('third');
+            $result = $number1 . $operator . $number2;
+        }
+
         return view('calculator.index', [
-            'one' => $one_get,
-            'two' => $two_get,
-            'hoge' => $hoge,
+            'result' => $request,
         ]);
     }
 }
