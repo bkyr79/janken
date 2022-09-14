@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->bigInteger('user_id');
+            $table->bigInteger('user_id')->nullable(true);
             $table->string('japanese_word')->nullable(false);
             $table->string('english_word')->nullable(false);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
