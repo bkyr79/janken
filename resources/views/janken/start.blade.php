@@ -12,7 +12,7 @@
         <td><input type="radio" name="hand" value="1"></td>
         <td><input type="radio" name="hand" value="2"></td>
       </tr>
-      <tr><td><input type="submit" value="勝負！"></td></tr>
+      <tr><td><input type="submit" value="勝負だぜ！"></td></tr>
     </table>
 </form>
 @endsection

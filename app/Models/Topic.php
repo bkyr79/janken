@@ -18,4 +18,11 @@ class Topic extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    // ランダムでtopicsテーブルデータを表示する
+    public function randomFiveTopics()
+    {
+        $five_topics = Topic::inRandomOrder()->take(5)->get();
+        return $five_topics;
+    }
 }
